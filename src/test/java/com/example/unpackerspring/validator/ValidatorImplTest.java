@@ -4,29 +4,41 @@ import com.example.unpackerspring.exceptions.DigitAndBracketsException;
 import com.example.unpackerspring.exceptions.LatinLetterException;
 import com.example.unpackerspring.exceptions.PairOfBracketsException;
 import com.example.unpackerspring.exceptions.SpaceException;
-import org.junit.Test;
+import com.example.unpackerspring.service.UnpackerStringService;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
-
+@SpringBootTest
 public class ValidatorImplTest {
+    private final UnpackerStringService service;
 
-    @Test(expected = PairOfBracketsException.class)
+    @Autowired
+    public ValidatorImplTest(UnpackerStringService service) {
+        this.service = service;
+    }
+
+    @Test
     public void pairOfBracketsTestWithException() throws PairOfBracketsException {
 
         Validator validator = new ValidatorImpl("][abc]]");
-        validator.pairOfBracketsValidation();
+
+        Assertions.assertThrows(PairOfBracketsException.class, () -> validator.pairOfBracketsValidation());
+
     }
 
     @Test
     public void pairOfBracketsTest() throws PairOfBracketsException {
-
         Validator validator = new ValidatorImpl("[sdf]");
         validator.pairOfBracketsValidation();
     }
 
-    @Test(expected = SpaceException.class)
+    @Test
     public void spaceTestWithException() throws SpaceException {
         Validator validator = new ValidatorImpl("[ab ]");
-        validator.spaceValidation();
+
+        Assertions.assertThrows(SpaceException.class, () -> validator.spaceValidation());
     }
 
     @Test
@@ -35,10 +47,10 @@ public class ValidatorImplTest {
         validator.spaceValidation();
     }
 
-    @Test(expected = DigitAndBracketsException.class)
-    public void digitAndBracketsTestWithException() throws DigitAndBracketsException {
+    @Test
+    public void digitAndBracketsTestWithException(){
         Validator validator = new ValidatorImpl("2a");
-        validator.digitAndBracketsValidation();
+        Assertions.assertThrows(DigitAndBracketsException.class, () -> validator.digitAndBracketsValidation());
     }
 
     @Test
@@ -47,10 +59,11 @@ public class ValidatorImplTest {
         validator.digitAndBracketsValidation();
     }
 
-    @Test(expected = LatinLetterException.class)
-    public void latinLettersTestWithException() throws LatinLetterException {
+    @Test
+    public void latinLettersTestWithException(){
         Validator validator = new ValidatorImpl("2[abь]а");
-        validator.latinLettersValidation();
+        Assertions.assertThrows(LatinLetterException.class, () -> validator.latinLettersValidation());
+
     }
 
     @Test

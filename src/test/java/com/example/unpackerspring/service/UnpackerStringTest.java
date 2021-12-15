@@ -1,25 +1,30 @@
-package com.example.unpackerspring.service.domain;
+package com.example.unpackerspring.service;
 
-import com.example.unpackerspring.service.UnpackerStringService;
+
 import com.example.unpackerspring.exceptions.MyValidationException;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
 
 class UnpackerStringTest {
-    static UnpackerStringService unpackerStringService;
 
-    @BeforeClass
-    public static void init() {
-        unpackerStringService = new UnpackerStringService();
+    private final UnpackerStringService unpackerStringService;
+    @Autowired
+    public UnpackerStringTest (UnpackerStringService unpackerStringService){
+        this.unpackerStringService = unpackerStringService;
     }
+
+
 
     @Test
     public void testMutiplyer() {
 
         String actual = unpackerStringService.stringMultiplyer("3[xyz]");
         String expected = "xyzxyzxyz";
-        Assert.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -28,7 +33,7 @@ class UnpackerStringTest {
         String actual = unpackerStringService.unpack("2[4[ab]c]3[2[z]xy]");
         String expected = "ababababcababababczzxyzzxyzzxy";
 
-        Assert.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -37,7 +42,7 @@ class UnpackerStringTest {
         String actual = unpackerStringService.unpack("3[ab]4[cde]");
         String expected = "abababcdecdecdecde";
 
-        Assert.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -46,7 +51,7 @@ class UnpackerStringTest {
         String actual = unpackerStringService.unpack("3[2[ab]]");
         String expected = "abababababab";
 
-        Assert.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
 
     }
 
@@ -56,7 +61,7 @@ class UnpackerStringTest {
         String actual = unpackerStringService.unpack("2[2[2[a]c]]");
         String expected = "aacaacaacaac";
 
-        Assert.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -65,7 +70,7 @@ class UnpackerStringTest {
         String actual = unpackerStringService.unpack("abc");
         String expected = "abc";
 
-        Assert.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -74,6 +79,6 @@ class UnpackerStringTest {
         String actual = unpackerStringService.unpack("7[a]");
         String expected = "aaaaaaa";
 
-        Assert.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 }

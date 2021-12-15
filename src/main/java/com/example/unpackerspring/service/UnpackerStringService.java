@@ -3,9 +3,12 @@ package com.example.unpackerspring.service;
 import com.example.unpackerspring.exceptions.MyValidationException;
 import com.example.unpackerspring.validator.Validator;
 import com.example.unpackerspring.validator.ValidatorImpl;
+import org.springframework.stereotype.Component;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Component
 public class UnpackerStringService {
     public final static String REGEX_FOR_MULTIPLYER = "\\[\\w+\\]";
     public final static String REGEX_FOR_UNPACK = "\\d+\\[\\w+\\]";
