@@ -21,11 +21,9 @@ public class ValidatorImplTest {
 
     @Test
     public void pairOfBracketsTestWithException() throws PairOfBracketsException {
-
         Validator validator = new ValidatorImpl("][abc]]");
 
         Assertions.assertThrows(PairOfBracketsException.class, () -> validator.pairOfBracketsValidation());
-
     }
 
     @Test
@@ -50,6 +48,7 @@ public class ValidatorImplTest {
     @Test
     public void digitAndBracketsTestWithException(){
         Validator validator = new ValidatorImpl("2a");
+
         Assertions.assertThrows(DigitAndBracketsException.class, () -> validator.digitAndBracketsValidation());
     }
 
@@ -62,8 +61,8 @@ public class ValidatorImplTest {
     @Test
     public void latinLettersTestWithException(){
         Validator validator = new ValidatorImpl("2[abь]а");
-        Assertions.assertThrows(LatinLetterException.class, () -> validator.latinLettersValidation());
 
+        Assertions.assertThrows(LatinLetterException.class, () -> validator.latinLettersValidation());
     }
 
     @Test

@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "296a43fb-2d6b-4272-9e69-061178497706",
+		"name": "Unpacker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "unpack200",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "3[xyz]",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/unpack-string/unpack",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"unpack-string",
+						"unpack"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unpack500cyr",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "абв"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/unpack-string/unpack",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"unpack-string",
+						"unpack"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unpack500space",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "ab c "
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/unpack-string/unpack",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"unpack-string",
+						"unpack"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unpack500no_brackets",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "1abc3"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/unpack-string/unpack",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"unpack-string",
+						"unpack"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unpack500no_pairs_of_brackets",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "2[ab"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/unpack-string/unpack",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"unpack-string",
+						"unpack"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

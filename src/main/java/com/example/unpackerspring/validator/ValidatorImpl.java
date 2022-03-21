@@ -10,7 +10,6 @@ public class ValidatorImpl implements Validator {
     private String input;
 
     public ValidatorImpl(String input) {
-
         this.input = input;
     }
 
@@ -29,7 +28,7 @@ public class ValidatorImpl implements Validator {
         matcher = pattern.matcher(result);
         while (matcher.find()) {
             result1 += matcher.group();
-        }//[я]
+        }
 
         pattern = Pattern.compile("(\\[|])*");
         matcher = pattern.matcher(result1);

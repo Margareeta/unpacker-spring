@@ -1,0 +1,36 @@
+openapi: 3.0.2
+info:
+  description: An application that unfolds validates and unfolds lines containing numbers, pairs of squarebrackets and latin letters 
+  version: 1.0.0
+  title: Unpacker
+  contact:
+    email: la.reine.m@gmail.com
+servers: 
+  - url: http://localhost:8080/api/v1/unpack-string
+tags:
+  - name: UnpackerController
+    description: validates and unfolds lines containing 
+paths:
+  /unpack:
+    post:
+      tags:
+        - UnpackerController
+      summary: creates a longer line by the given algorythm
+      description:  unrolls a valid line into a longer one by the given algorythm
+      requestBody:
+        content:
+          text:
+            schema: 
+              type: string
+              description: original line
+              example: 3[xyz]
+      responses:    
+       '200':
+          description: OK
+          content:
+            text:
+             schema: 
+               type: string
+               description: unrolled line
+               example: xyzxyzxyz
+  
